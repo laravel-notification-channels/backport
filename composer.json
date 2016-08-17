@@ -1,0 +1,48 @@
+{
+    "name": "laravel-notification-channels/backport",
+    "description": "Backport of the Laravel Notification System for Laravel 5.1 and 5.2",
+    "homepage": "https://github.com/laravel-notification-channels/backport",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Taylor Otwell",
+            "email": "taylorotwell@gmail.com"
+        },
+        {
+            "name": "Marcel Pociot",
+            "email": "m.pociot@gmail.com",
+            "homepage": "http://www.marcelpociot.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/broadcasting": "5.1.*|5.2.*",
+        "illuminate/bus": "5.1.*|5.2.*",
+        "illuminate/contracts": "5.1.*|5.2.*",
+        "illuminate/support": "5.1.*|5.2.*",
+        "illuminate/queue": "5.1.*|5.2.*",
+        "ramsey/uuid": "~3.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.5",
+        "phpunit/phpunit": "4.*"
+    },
+    "replace": {
+        "illuminate/notifications": "5.3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminate\\Contracts\\Notifications\\": "src/Contracts",
+            "Illuminate\\Notifications\\": "src/Notifications"
+        }
+    },
+    "suggest": {
+        "guzzlehttp/guzzle": "Required to use the Slack transport.",
+        "illuminate/database": "Required to use the database transport (5.1.*|5.2.*).",
+        "nexmo/client": "Required to use the Nexmo transport."
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
