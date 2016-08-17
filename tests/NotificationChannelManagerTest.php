@@ -46,7 +46,7 @@ class NotificationChannelManagerTest extends PHPUnit_Framework_TestCase
     public function testNotificationCanBeQueued()
     {
         $container = Mockery::mock(Container::class.'[version]');
-        $container->shouldReceive('version')->andReturn($_ENV['LARAVEL_VERSION']);
+        $container->shouldReceive('version')->andReturn(getenv('LARAVEL_VERSION'));
         $container->instance('config', ['app.name' => 'Name', 'app.logo' => 'Logo']);
         $container->instance(Bus::class, $bus = Mockery::mock());
         $bus->shouldReceive('dispatch')->with(Mockery::type(Illuminate\Notifications\SendQueuedNotifications::class));
