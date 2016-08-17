@@ -7,7 +7,7 @@
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/:sensio_labs_id.svg?style=flat-square)](https://insight.sensiolabs.com/projects/:sensio_labs_id)
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/backport.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/backport)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/backport/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/backport/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/backport.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/backport)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/backport.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/backport) 
 
 This package acts as a backport for the Laravel 5.3 notification system, to allow its usage with Laravel 5.1 and Laravel 5.2. 
 
