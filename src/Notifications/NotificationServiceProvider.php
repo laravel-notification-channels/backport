@@ -7,6 +7,7 @@ use Illuminate\Notifications\Console\NotificationTableCommand;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Notifications\Factory as FactoryContract;
 use Illuminate\Contracts\Notifications\Dispatcher as DispatcherContract;
+use Illuminate\Bus\Dispatcher as Bus;
 
 class NotificationServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,10 @@ class NotificationServiceProvider extends ServiceProvider
                 __DIR__.'/resources/views' => $this->app->basePath().'/resources/views/vendor/notifications',
             ], 'laravel-notifications');
         }
+
+        $this->app->make(Bus::class)->maps([
+            SendQueuedNotifications::class => SendQueuedNotificationsHandler::class.'@handle',
+        ]);
     }
 
     /**
