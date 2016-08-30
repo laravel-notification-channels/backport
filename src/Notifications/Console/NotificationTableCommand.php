@@ -2,8 +2,9 @@
 
 namespace Illuminate\Notifications\Console;
 
+use ReflectionClass;
+use InvalidArgumentException;
 use Illuminate\Console\Command;
-use Illuminate\Support\Composer;
 use Illuminate\Filesystem\Filesystem;
 
 class NotificationTableCommand extends Command
@@ -30,7 +31,7 @@ class NotificationTableCommand extends Command
     protected $files;
 
     /**
-     * @var \Illuminate\Support\Composer
+     * @var mixed
      */
     protected $composer;
 
@@ -38,14 +39,29 @@ class NotificationTableCommand extends Command
      * Create a new notifications table command instance.
      *
      * @param  \Illuminate\Filesystem\Filesystem  $files
-     * @param  \Illuminate\Support\Composer    $composer
+     * @param  mixed $composer
      * @return void
      */
-    public function __construct(Filesystem $files, Composer $composer)
+    public function __construct(Filesystem $files, $composer)
     {
         parent::__construct();
 
         $this->files = $files;
+        $composerClass = 'Illuminate\Support\Composer';
+        if (class_exists('Illuminate\Foundation\Composer')) {
+            $composerClass = 'Illuminate\Foundation\Composer';
+        }
+        $reflection = new ReflectionClass($composerClass);
+        if (!is_object($composer) || !$reflection->isInstance($composer)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Argument 2 passed to %s::%s must be an instance of %s',
+                    __CLASS__,
+                    __FUNCTION__,
+                    $composerClass
+                )
+            );
+        }
         $this->composer = $composer;
     }
 
