@@ -34,7 +34,8 @@
     "autoload": {
         "psr-4": {
             "Illuminate\\Contracts\\Notifications\\": "src/Contracts",
-            "Illuminate\\Notifications\\": "src/Notifications"
+            "Illuminate\\Notifications\\": "src/Notifications",
+            "Illuminate\\Support\\Facades\\": "src/Facades"
         }
     },
     "suggest": {
