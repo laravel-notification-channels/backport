@@ -26,9 +26,11 @@ class NotificationServiceProvider extends ServiceProvider
             ], 'laravel-notifications');
         }
 
-        $this->app->make(Bus::class)->maps([
-            SendQueuedNotifications::class => SendQueuedNotificationsHandler::class.'@handle',
-        ]);
+        if (version_compare($this->app->version(), '5.2', '<')) {
+            $this->app->make(Bus::class)->maps([
+                SendQueuedNotifications::class => SendQueuedNotificationsHandler::class . '@handle',
+            ]);
+        }
     }
 
     /**
