@@ -15,14 +15,14 @@ class SendQueuedNotifications implements ShouldQueue
      *
      * @var \Illuminate\Support\Collection
      */
-    protected $notifiables;
+    public $notifiables;
 
     /**
      * The notification to be sent.
      *
      * @var \Illuminate\Notifications\Notification
      */
-    protected $notification;
+    public $notification;
 
     /**
      * Create a new job instance.
