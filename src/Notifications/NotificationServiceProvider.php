@@ -26,7 +26,7 @@ class NotificationServiceProvider extends ServiceProvider
             ], 'laravel-notifications');
         }
 
-        if (version_compare($this->app->version(), '5.2', '<')) {
+        if (version_compare($this->getAppVersion(), '5.2', '<')) {
             $this->app->make(Bus::class)->maps([
                 SendQueuedNotifications::class => SendQueuedNotificationsHandler::class . '@handle',
             ]);
@@ -69,5 +69,19 @@ class NotificationServiceProvider extends ServiceProvider
             'command.notification.make',
             'command.notification.table'
         ]);
+    }
+
+    /**
+     * Get the version number of the application.
+     *
+     * @return string
+     */
+    private function getAppVersion()
+    {
+        $version = $this->app->version();
+        if (substr($version, 0, 7) === 'Lumen (') {
+            $version = array_first(explode(')', str_replace('Lumen (', '', $version)));
+        }
+        return $version;
     }
 }
