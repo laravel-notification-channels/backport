@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": ">=5.6.4",
+        "illuminate/broadcasting": "5.1.*|5.2.*",
         "illuminate/bus": "5.1.*|5.2.*",
         "illuminate/contracts": "5.1.*|5.2.*",
         "illuminate/support": "5.1.*|5.2.*",
@@ -40,8 +41,7 @@
     "suggest": {
         "guzzlehttp/guzzle": "Required to use the Slack transport.",
         "illuminate/database": "Required to use the database transport (5.1.*|5.2.*).",
-        "nexmo/client": "Required to use the Nexmo transport.",
-        "enniel/illuminate-broadcasting-backport": "Required to use in older versions of Laravel (5.1.*|5.2.*)."
+        "nexmo/client": "Required to use the Nexmo transport."
     },
     "config": {
         "sort-packages": true
