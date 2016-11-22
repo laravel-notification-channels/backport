@@ -54,7 +54,9 @@ class BroadcastNotificationCreated implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return [new PrivateChannel($this->channelName())];
+        $channel = new PrivateChannel($this->channelName());
+
+        return [(string) $channel];
     }
 
     /**
