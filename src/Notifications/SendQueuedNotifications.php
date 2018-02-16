@@ -24,6 +24,8 @@ class SendQueuedNotifications implements ShouldQueue
      */
     public $notification;
 
+    protected $channels = null;
+
     /**
      * Create a new job instance.
      *
@@ -31,8 +33,9 @@ class SendQueuedNotifications implements ShouldQueue
      * @param  \Illuminate\Notifications\Notification  $notification
      * @return void
      */
-    public function __construct($notifiables, $notification)
+    public function __construct($notifiables, $notification, array $channels = null)
     {
+        $this->channels = $channels;
         $this->notifiables = $notifiables;
         $this->notification = $notification;
     }
@@ -45,6 +48,6 @@ class SendQueuedNotifications implements ShouldQueue
      */
     public function handle(ChannelManager $manager)
     {
-        $manager->sendNow($this->notifiables, $this->notification);
+        $manager->sendNow($this->notifiables, $this->notification, $this->channels);
     }
 }
