@@ -80,7 +80,7 @@ class NotificationServiceProvider extends ServiceProvider
     {
         $version = $this->app->version();
         if (substr($version, 0, 7) === 'Lumen (') {
-            $version = array_first(explode(')', str_replace('Lumen (', '', $version)));
+            $version = head(explode(')', str_replace('Lumen (', '', $version)));
         }
         return $version;
     }
